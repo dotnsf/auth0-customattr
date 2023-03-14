@@ -1,0 +1,41 @@
+
+<div class="_container">
+  <div id="title_div">
+    <table class="table">
+      <tr>
+      <td style="color:skyblue;font-size:30px;">
+        <a href="/" style="text-decoration: none;">Auth0 Custom Attributes</a>
+      </td><td>
+        <div class="dropdown">
+<% if( user ){ %>
+          <a href="#" class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="dropdownMenuLink" aria-haspopup="true" aria-expandable="false">
+            <img <% if( user.metadata && user.metadata.nft ){ %>class="nfted" <% } %>src="<%= user.image_url %>" width="25px"/>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" id="dropdown-logout" href="/auth0/logout">Logout</a>
+          </div>
+<% }else{ %>
+          <a href="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" id="dropdownMenuLink" aria-haspopup="true" aria-expandable="false">
+            <i class="fas fa-meh"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" id="dropdown-loginsignin" href="/auth0/login">Login</a>
+          </div>
+<% } %>
+        </div>
+      </td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+<% if( user ){ %>
+var _uuid = '<%= user.id %>';
+
+var _tmp = _uuid.split('|');
+if( _tmp.length > 1 ){
+  _tmp.shift();
+}
+var _uuid0 = _tmp.join('|');
+<% } %>
+</script>
